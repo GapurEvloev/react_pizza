@@ -2,14 +2,14 @@ import React from "react";
 
 import classNames from "classnames";
 
-function Button(props) {
+function Button({onClick, className, children, outline}) {
   return (
-    <button
-      className={classNames("button", {
-        "button--outline": props.outline,
+    <button onClick = {onClick}
+      className={classNames("button", className, {
+        "button--outline": outline,
       })}
     >
-      {props.children}
+      {children}
     </button>
   );
 }
