@@ -35,7 +35,7 @@ import React, { useState } from 'react';
 //     }
 // }
 
-function Categories({items}) {
+function Categories({items, onClickItem}) {
     const [activeCategory, setActiveCategory] = useState(null);
 
     const onSelectCategory = index => {
