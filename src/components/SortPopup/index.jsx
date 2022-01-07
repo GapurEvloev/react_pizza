@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-function SortPopup({ items }) {
+const SortPopup = React.memo(function SortPopup({ items }) {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [activeSort, setActiveSort] = useState(0);
   const sortRef = useRef();
@@ -12,16 +12,17 @@ function SortPopup({ items }) {
 
   const onActiveSort = (index) => {
     setActiveSort(index);
+    setVisiblePopup(!visiblePopup);
   };
 
-  const handleOutsideClick = (e) => {
-    if (!e.path.includes(sortRef.current)) {
-      setVisiblePopup(false);
-    }
-  };
+  // const handleOutsideClick = (e) => {
+  //     if(!e.path.includes(sortRef.current)) {
+  //         setVisiblePopup(false);
+  //     }
+  // }
 
   useEffect(() => {
-    document.body.addEventListener("click", handleOutsideClick);
+    // document.body.addEventListener('click', handleOutsideClick)
   }, []);
 
   return (
@@ -68,6 +69,6 @@ function SortPopup({ items }) {
       )}
     </div>
   );
-}
+});
 
 export default SortPopup;
